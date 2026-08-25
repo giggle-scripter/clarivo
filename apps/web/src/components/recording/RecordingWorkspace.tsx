@@ -68,7 +68,7 @@ export function RecordingWorkspace({ practiceSession }: RecordingWorkspaceProps)
       router.push(`/result/${uploadedAttempt.id}`);
     } catch (reason) {
       setUploadError(
-        reason instanceof Error ? reason.message : "Không thể tải audio lên.",
+        reason instanceof Error ? reason.message : "Không thể lưu bản ghi.",
       );
       setUploading(false);
     }
@@ -77,8 +77,8 @@ export function RecordingWorkspace({ practiceSession }: RecordingWorkspaceProps)
   return (
     <section className="session-stage recording-workspace">
       <div className="session-topline">
-        <p className="eyebrow">Prompt của bạn</p>
-        <span>Attempt {practiceSession.attempts.length + 1}</span>
+        <p className="eyebrow">Câu hỏi của bạn</p>
+        <span>Lần nói {practiceSession.attempts.length + 1}</span>
       </div>
       <h1>{practiceSession.prompt.text}</h1>
       <div className="session-rule" />
@@ -87,7 +87,7 @@ export function RecordingWorkspace({ practiceSession }: RecordingWorkspaceProps)
         <div className="recorder-panel">
           <span className="record-icon" aria-hidden="true" />
           <h2>Sẵn sàng gom ý?</h2>
-          <p>Bạn có 15 giây để chọn main point, lý do và một ví dụ cụ thể.</p>
+          <p>Bạn có 15 giây để chọn ý chính, lý do và một ví dụ cụ thể.</p>
           <button
             className="button button--primary"
             onClick={beginPreparation}
@@ -122,7 +122,7 @@ export function RecordingWorkspace({ practiceSession }: RecordingWorkspaceProps)
             <span />
           </div>
           <h2>Bắt đầu khi bạn sẵn sàng</h2>
-          <p>Trình duyệt sẽ hỏi quyền microphone trong lần ghi âm đầu tiên.</p>
+          <p>Trình duyệt sẽ xin quyền dùng micrô trong lần ghi âm đầu tiên.</p>
           <button
             className="button button--record"
             onClick={recorder.startRecording}
@@ -135,8 +135,8 @@ export function RecordingWorkspace({ practiceSession }: RecordingWorkspaceProps)
 
       {recorder.state === "requesting_permission" ? (
         <StatusMessage
-          title="Đang chờ quyền microphone"
-          detail="Chọn Allow trong hộp thoại của trình duyệt để tiếp tục."
+          title="Đang chờ quyền dùng micrô"
+          detail="Chọn Cho phép trong hộp thoại của trình duyệt để tiếp tục."
         />
       ) : null}
 
@@ -174,13 +174,13 @@ export function RecordingWorkspace({ practiceSession }: RecordingWorkspaceProps)
             <span className="complete-chip">Đã ghi xong</span>
           </div>
           <audio controls preload="metadata" src={recorder.audioUrl}>
-            Trình duyệt không hỗ trợ phát audio.
+            Trình duyệt không hỗ trợ phát bản ghi âm.
           </audio>
           {recorder.durationMs < 1000 ? (
             <p className="validation-note">Bản ghi quá ngắn. Hãy thử lại ít nhất 1 giây.</p>
           ) : null}
           {uploadError ? (
-            <StatusMessage title="Upload thất bại" detail={uploadError} tone="error" />
+            <StatusMessage title="Chưa lưu được bản ghi" detail={uploadError} tone="error" />
           ) : null}
           <div className="playback-actions">
             <button
@@ -197,7 +197,7 @@ export function RecordingWorkspace({ practiceSession }: RecordingWorkspaceProps)
               onClick={submitAttempt}
               type="button"
             >
-              {uploading ? "Đang tải lên..." : "Nộp bản ghi →"}
+              {uploading ? "Đang lưu bản ghi..." : "Lưu bản ghi →"}
             </button>
           </div>
         </div>
@@ -207,7 +207,7 @@ export function RecordingWorkspace({ practiceSession }: RecordingWorkspaceProps)
         <div>
           <StatusMessage
             title="Chưa thể ghi âm"
-            detail={recorder.error ?? "Hãy kiểm tra microphone và thử lại."}
+            detail={recorder.error ?? "Hãy kiểm tra micrô và thử lại."}
             tone="error"
           />
           <button

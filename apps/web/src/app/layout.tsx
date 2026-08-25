@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
 
+import "@fontsource-variable/lora";
+import "@fontsource/be-vietnam-pro/400.css";
+import "@fontsource/be-vietnam-pro/500.css";
+import "@fontsource/be-vietnam-pro/600.css";
+import "@fontsource/be-vietnam-pro/700.css";
+import "@fontsource/be-vietnam-pro/800.css";
+
 import { AppHeader } from "@/components/ui/AppHeader";
 
 import "./globals.css";

@@ -69,7 +69,7 @@ export function useAudioRecorder(maxDurationMs: number) {
 
   const startRecording = useCallback(async () => {
     if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) {
-      setError("Trình duyệt này chưa hỗ trợ ghi âm bằng MediaRecorder.");
+      setError("Trình duyệt này chưa hỗ trợ tính năng ghi âm.");
       setState("error");
       return;
     }
@@ -123,8 +123,8 @@ export function useAudioRecorder(maxDurationMs: number) {
         ["NotAllowedError", "PermissionDeniedError"].includes(reason.name);
       setError(
         permissionDenied
-          ? "Clarivo chưa được cấp quyền microphone. Hãy cho phép trong cài đặt trình duyệt."
-          : "Không tìm thấy microphone khả dụng.",
+          ? "Clarivo chưa được cấp quyền dùng micrô. Hãy cho phép trong cài đặt trình duyệt."
+          : "Không tìm thấy micrô khả dụng.",
       );
       setState("error");
     }

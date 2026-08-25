@@ -30,7 +30,7 @@ export async function apiRequest<T>(
       detail?: string;
     } | null;
     throw new ApiError(
-      body?.detail ?? "Không thể kết nối với Clarivo API.",
+      body?.detail ?? "Clarivo chưa thể tải dữ liệu.",
       response.status,
     );
   }

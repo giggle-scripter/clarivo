@@ -15,7 +15,7 @@ const principles = [
   {
     number: "03",
     title: "Thử lại có mục tiêu",
-    copy: "Mỗi lượt retry chỉ sửa những điểm có tác động lớn nhất đến người nghe.",
+    copy: "Mỗi lần nói lại chỉ sửa những điểm có tác động lớn nhất đến người nghe.",
   },
 ];
 
@@ -25,7 +25,7 @@ export default function Home() {
     <main>
       <section className="hero">
         <div className="hero__content">
-          <p className="eyebrow">AI articulation coach · Vietnamese first</p>
+          <p className="eyebrow">Trợ lý luyện diễn đạt · Tiếng Việt</p>
           <h1>
             Nói rõ điều
             <br />
@@ -42,10 +42,10 @@ export default function Home() {
             <span className="hero__note">15 giây chuẩn bị · 60 giây nói</span>
           </div>
         </div>
-        <div className="hero__visual" aria-label="Clarivo practice loop">
+        <div className="hero__visual" aria-label="Một lượt luyện tập cùng Clarivo">
           <div className="loop-card loop-card--prompt">
-            <span>Prompt</span>
-            <strong>“Hãy giải thích project gần nhất của bạn.”</strong>
+            <span>Câu hỏi luyện tập</span>
+            <strong>“Hãy giải thích dự án gần nhất của bạn.”</strong>
           </div>
           <div className="voice-line" aria-hidden="true">
             {Array.from({ length: 22 }).map((_, index) => (
@@ -54,10 +54,10 @@ export default function Home() {
           </div>
           <div className="loop-card loop-card--feedback">
             <span>Điểm cần sửa trước</span>
-            <strong>Main point xuất hiện quá muộn</strong>
-            <small>Mở đầu trực tiếp bằng tên và mục tiêu project.</small>
+            <strong>Ý chính xuất hiện quá muộn</strong>
+            <small>Mở đầu trực tiếp bằng tên và mục tiêu của dự án.</small>
           </div>
-          <div className="retry-pill">Retry · rõ hơn một lượt</div>
+          <div className="retry-pill">Nói lại · rõ hơn mỗi lần</div>
         </div>
       </section>
 

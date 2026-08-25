@@ -1,3 +1,4 @@
+import { getSkillLabel, getTopicLabel } from "@/lib/exercise-labels";
 import type { Prompt } from "@/types/api";
 
 
@@ -24,11 +25,11 @@ export function PromptCard({
     >
       <span className="prompt-radio" aria-hidden="true" />
       <span className="prompt-card__content">
-        <span className="prompt-topic">{prompt.topic.replaceAll("-", " ")}</span>
+        <span className="prompt-topic">{getTopicLabel(prompt.topic)}</span>
         <strong>{prompt.text}</strong>
         <span className="skill-list">
           {prompt.target_skills.map((skill) => (
-            <span key={skill}>{skill}</span>
+            <span key={skill}>{getSkillLabel(skill)}</span>
           ))}
         </span>
       </span>

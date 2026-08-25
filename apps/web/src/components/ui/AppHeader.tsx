@@ -4,7 +4,7 @@ import Link from "next/link";
 export function AppHeader() {
   return (
     <header className="site-header">
-      <Link className="brand" href="/" aria-label="Clarivo home">
+      <Link className="brand" href="/" aria-label="Trang chủ Clarivo">
         <span className="brand-mark" aria-hidden="true">
           C
         </span>

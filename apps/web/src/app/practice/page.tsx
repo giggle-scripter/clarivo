@@ -25,7 +25,7 @@ export default function PracticePage() {
   return (
     <main className="content-page">
       <section className="page-intro">
-        <p className="eyebrow">Practice library</p>
+        <p className="eyebrow">Chọn bài luyện</p>
         <h1>Hôm nay bạn muốn nói rõ hơn trong tình huống nào?</h1>
         <p>
           Chọn một dạng bài. Mỗi lượt gồm 15 giây chuẩn bị, 60 giây trình bày
@@ -35,15 +35,15 @@ export default function PracticePage() {
 
       {loading ? (
         <StatusMessage
-          title="Đang tải bài luyện"
-          detail="Clarivo đang lấy danh sách exercise từ API."
+          title="Đang chuẩn bị bài luyện"
+          detail="Danh sách bài luyện sẽ xuất hiện sau giây lát."
         />
       ) : null}
 
       {error ? (
         <StatusMessage
-          title="Chưa kết nối được API"
-          detail={`${error} Hãy kiểm tra FastAPI đang chạy ở port 8000.`}
+          title="Chưa tải được bài luyện"
+          detail={`${error} Hãy kiểm tra ứng dụng nền đang chạy ở cổng 8000.`}
           tone="error"
         />
       ) : null}

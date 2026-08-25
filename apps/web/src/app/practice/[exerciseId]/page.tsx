@@ -27,7 +27,7 @@ export default function ExerciseDetailPage() {
         setSelectedPromptId(result.prompts[0]?.id ?? null);
       })
       .catch((reason: unknown) => {
-        setError(reason instanceof Error ? reason.message : "Không thể tải prompt.");
+        setError(reason instanceof Error ? reason.message : "Không thể tải câu hỏi.");
       });
   }, [params.exerciseId]);
 
@@ -39,7 +39,7 @@ export default function ExerciseDetailPage() {
       const practiceSession = await createPracticeSession(selectedPromptId);
       router.push(`/session/${practiceSession.id}`);
     } catch (reason) {
-      setError(reason instanceof Error ? reason.message : "Không thể tạo session.");
+      setError(reason instanceof Error ? reason.message : "Không thể bắt đầu buổi luyện.");
       setStarting(false);
     }
   }
@@ -51,7 +51,7 @@ export default function ExerciseDetailPage() {
       </Link>
 
       {!exercise && !error ? (
-        <StatusMessage title="Đang tải prompt" detail="Chỉ còn một nhịp nữa." />
+        <StatusMessage title="Đang tải câu hỏi" detail="Chỉ còn một chút nữa." />
       ) : null}
 
       {exercise ? (
@@ -70,7 +70,7 @@ export default function ExerciseDetailPage() {
             </div>
           </section>
 
-          <section className="prompt-list" aria-label="Danh sách prompt">
+          <section className="prompt-list" aria-label="Danh sách câu hỏi">
             {exercise.prompts.map((prompt) => (
               <PromptCard
                 disabled={starting}
@@ -89,7 +89,7 @@ export default function ExerciseDetailPage() {
           <div className="sticky-action">
             <div>
               <span className="status-dot" />
-              <p>Microphone sẽ được hỏi quyền ở bước tiếp theo.</p>
+              <p>Trình duyệt sẽ xin quyền dùng micrô ở bước tiếp theo.</p>
             </div>
             <button
               className="button button--primary"
@@ -97,7 +97,7 @@ export default function ExerciseDetailPage() {
               onClick={startSession}
               type="button"
             >
-              {starting ? "Đang tạo session..." : "Bắt đầu chuẩn bị →"}
+              {starting ? "Đang mở buổi luyện..." : "Bắt đầu chuẩn bị →"}
             </button>
           </div>
         </>

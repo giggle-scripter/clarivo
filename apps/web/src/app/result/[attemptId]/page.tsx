@@ -18,35 +18,35 @@ export default function ResultPage() {
     getAttempt(params.attemptId)
       .then(setAttempt)
       .catch((reason: unknown) => {
-        setError(reason instanceof Error ? reason.message : "Không thể tải attempt.");
+        setError(reason instanceof Error ? reason.message : "Không thể tải kết quả.");
       });
   }, [params.attemptId]);
 
   return (
     <main className="content-page content-page--narrow">
       {!attempt && !error ? (
-        <StatusMessage title="Đang tải bản ghi" detail="Clarivo đang mở attempt vừa tạo." />
+        <StatusMessage title="Đang tải bản ghi" detail="Clarivo đang mở lần nói vừa lưu." />
       ) : null}
 
       {error ? (
-        <StatusMessage title="Không thể tải attempt" detail={error} tone="error" />
+        <StatusMessage title="Không thể tải kết quả" detail={error} tone="error" />
       ) : null}
 
       {attempt ? (
         <section className="result-card">
           <div className="result-card__heading">
             <div>
-              <p className="eyebrow">Attempt {attempt.attempt_number}</p>
+              <p className="eyebrow">Lần nói {attempt.attempt_number}</p>
               <h1>Bản ghi đã được lưu</h1>
             </div>
-            <span className="complete-chip">Upload thành công</span>
+            <span className="complete-chip">Đã lưu bản ghi</span>
           </div>
           <audio
             controls
             preload="metadata"
             src={getAttemptAudioUrl(attempt.id)}
           >
-            Trình duyệt không hỗ trợ phát audio.
+            Trình duyệt không hỗ trợ phát bản ghi âm.
           </audio>
           <div className="result-meta">
             <div>
@@ -59,19 +59,19 @@ export default function ResultPage() {
             </div>
             <div>
               <span>Trạng thái</span>
-              <strong>{attempt.status}</strong>
+              <strong>{attempt.status === "UPLOADED" ? "Đã lưu" : "Đang xử lý"}</strong>
             </div>
           </div>
           <div className="coming-next">
-            <span>Tiếp theo trong roadmap</span>
-            <p>Audio → ASR → transcript → delivery analysis.</p>
+            <span>Sắp có trong Clarivo</span>
+            <p>Bản ghi → lời thoại → phân tích cách trình bày.</p>
           </div>
           <div className="playback-actions">
             <Link
               className="button button--secondary"
               href={`/session/${attempt.practice_session_id}`}
             >
-              Retry cùng prompt
+              Nói lại câu này
             </Link>
             <Link className="button button--primary" href="/practice">
               Chọn bài khác →

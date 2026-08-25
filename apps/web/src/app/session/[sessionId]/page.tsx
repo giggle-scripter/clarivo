@@ -19,7 +19,7 @@ export default function SessionPage() {
     getPracticeSession(params.sessionId)
       .then(setPracticeSession)
       .catch((reason: unknown) => {
-        setError(reason instanceof Error ? reason.message : "Không thể tải session.");
+        setError(reason instanceof Error ? reason.message : "Không thể mở buổi luyện.");
       });
   }, [params.sessionId]);
 
@@ -30,11 +30,11 @@ export default function SessionPage() {
       </Link>
 
       {!practiceSession && !error ? (
-        <StatusMessage title="Đang mở session" detail="Clarivo đang lấy prompt của bạn." />
+        <StatusMessage title="Đang mở buổi luyện" detail="Clarivo đang chuẩn bị câu hỏi của bạn." />
       ) : null}
 
       {error ? (
-        <StatusMessage title="Không thể mở session" detail={error} tone="error" />
+        <StatusMessage title="Không thể mở buổi luyện" detail={error} tone="error" />
       ) : null}
 
       {practiceSession ? (
