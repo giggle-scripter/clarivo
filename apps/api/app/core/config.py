@@ -12,6 +12,12 @@ class Settings(BaseSettings):
     database_url: str = (
         "postgresql+psycopg://clarivo:clarivo@localhost:5433/clarivo"
     )
+    s3_endpoint: str = "http://localhost:9000"
+    s3_bucket: str = "clarivo-audio"
+    s3_access_key: str = "clarivo"
+    s3_secret_key: str = "clarivo-local-secret"
+    s3_region: str = "us-east-1"
+    max_audio_bytes: int = 25 * 1024 * 1024
 
     model_config = SettingsConfigDict(
         env_file=".env",

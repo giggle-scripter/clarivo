@@ -14,7 +14,7 @@ From the repository root:
 
 ```bash
 uv sync --project apps/api --dev
-docker compose up -d db
+docker compose up -d db minio
 uv run --project apps/api alembic -c apps/api/alembic.ini upgrade head
 uv run --project apps/api python scripts/seed_prompts.py
 uv run --project apps/api uvicorn app.main:app --app-dir apps/api --reload
@@ -33,7 +33,13 @@ POST /practice-sessions
 GET  /practice-sessions/{id}
 POST /practice-sessions/{id}/attempts
 GET  /attempts/{id}
+POST /attempts/{id}/audio
+GET  /attempts/{id}/audio
 ```
+
+Audio is stored in the S3-compatible MinIO service. The database contains only
+its object URI and recording metadata. MinIO Console is available at
+`http://localhost:9001` in local development.
 
 ## Tests
 

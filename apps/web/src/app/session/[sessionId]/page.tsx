@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { RecordingWorkspace } from "@/components/recording/RecordingWorkspace";
 import { StatusMessage } from "@/components/ui/StatusMessage";
 import { getPracticeSession } from "@/lib/api/sessions";
 import type { PracticeSession } from "@/types/api";
@@ -37,19 +38,7 @@ export default function SessionPage() {
       ) : null}
 
       {practiceSession ? (
-        <section className="session-stage">
-          <p className="eyebrow">Prompt của bạn</p>
-          <h1>{practiceSession.prompt.text}</h1>
-          <div className="session-rule" />
-          <div className="session-placeholder">
-            <span className="record-icon" aria-hidden="true" />
-            <h2>Session đã sẵn sàng</h2>
-            <p>
-              Luồng tạo session đã hoàn tất. Recorder sẽ được kết nối trong
-              checkpoint tiếp theo.
-            </p>
-          </div>
-        </section>
+        <RecordingWorkspace practiceSession={practiceSession} />
       ) : null}
     </main>
   );

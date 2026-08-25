@@ -20,9 +20,9 @@ Prompt
 
 ## Current status
 
-Phase 1 — Application foundation. The FastAPI backend now includes health and
-exercise read APIs, PostgreSQL models and migration for `Exercise` and `Prompt`,
-plus an idempotent seed containing 18 Vietnamese practice prompts.
+Phase 2 — Recording. Clarivo now supports the practice-selection flow, creates
+sessions and retry attempts, records audio in the browser, stores it in MinIO,
+and reloads it for playback. ASR and analysis are the next product phase.
 
 ## Stack
 
@@ -51,10 +51,12 @@ PostgreSQL:
 
 ```bash
 uv sync --project apps/api --dev
-docker compose up -d db
+docker compose up -d
 uv run --project apps/api alembic -c apps/api/alembic.ini upgrade head
 uv run --project apps/api python scripts/seed_prompts.py
 uv run --project apps/api uvicorn app.main:app --app-dir apps/api --reload
+npm install --prefix apps/web
+npm run dev --prefix apps/web
 ```
 
 Run backend tests with:
