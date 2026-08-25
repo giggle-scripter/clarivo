@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from app.api.routes import exercises, health
+from app.api.routes import attempts, exercises, health, sessions
 from app.core.config import settings
 
 
@@ -12,6 +12,8 @@ def create_app() -> FastAPI:
     )
     application.include_router(health.router)
     application.include_router(exercises.router)
+    application.include_router(sessions.router)
+    application.include_router(attempts.router)
     return application
 
 

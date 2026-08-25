@@ -23,6 +23,18 @@ uv run --project apps/api uvicorn app.main:app --app-dir apps/api --reload
 The API is then available at `http://localhost:8000`. Interactive documentation
 is available at `/docs`.
 
+## Available endpoints
+
+```text
+GET  /health
+GET  /exercises
+GET  /exercises/{id}
+POST /practice-sessions
+GET  /practice-sessions/{id}
+POST /practice-sessions/{id}/attempts
+GET  /attempts/{id}
+```
+
 ## Tests
 
 ```bash
