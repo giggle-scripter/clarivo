@@ -20,8 +20,9 @@ Prompt
 
 ## Current status
 
-Phase 1 — Application foundation. The repository currently contains the initial
-project boundaries and specifications; application scaffolding comes next.
+Phase 1 — Application foundation. The FastAPI backend now includes health and
+exercise read APIs, PostgreSQL models and migration for `Exercise` and `Prompt`,
+plus an idempotent seed containing 18 Vietnamese practice prompts.
 
 ## Stack
 
@@ -45,14 +46,24 @@ The original planning documents are retained in `instruction_docs/`.
 
 ## Local development
 
-Copy `.env.example` to `.env`, then start PostgreSQL:
+Copy `.env.example` to `.env`, install backend dependencies, then start
+PostgreSQL:
 
 ```bash
+uv sync --project apps/api --dev
 docker compose up -d db
+uv run --project apps/api alembic -c apps/api/alembic.ini upgrade head
+uv run --project apps/api python scripts/seed_prompts.py
+uv run --project apps/api uvicorn app.main:app --app-dir apps/api --reload
 ```
 
-Backend and frontend setup instructions will be added when those applications
-are initialized.
+Run backend tests with:
+
+```bash
+uv run --project apps/api pytest apps/api/tests
+```
+
+Frontend setup instructions will be added when that application is initialized.
 
 ## Roadmap
 

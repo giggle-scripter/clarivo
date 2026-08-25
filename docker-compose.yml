@@ -6,7 +6,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-clarivo}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-clarivo}
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - clarivo_db:/var/lib/postgresql/data
     healthcheck:
